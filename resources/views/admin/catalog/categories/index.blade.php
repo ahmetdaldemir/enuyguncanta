@@ -20,14 +20,20 @@
         @endcomponent
     </div>
     <!-- end page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="mt-0 header-title">Kategoriler
+                    <a href="/admin/catalog/categories/create" class="btn btn-primary float-right">Kategori Ekle</a>
+                </h4>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">Kategoriler
-                        <a href="/admin/catalog/categories/create" class="btn btn-primary float-right">Kategori Ekle</a>
-                    </h4>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover mb-0">
                             <thead>

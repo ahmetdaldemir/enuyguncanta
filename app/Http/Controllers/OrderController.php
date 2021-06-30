@@ -2,30 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
+use App\Models\OrderStatu;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    protected $order;
+
+    public function __construct()
+    {
+        $this->order = new Order();
+    }
+
     public function index()
     {
-        $data['orders'] = Product::all();
+        $data["orderstatus"] = OrderStatu::all();
+//        $data['users'] = User::all();
+        $data['user_id'] = Auth()->id();
+        $data['orders'] = Order::all();
+//        $data['orders'] = Product::all();
         return view('admin.orders.index',$data);
     }
 
     public function create(){
-        $data['brands'] = Brand::all();
+        $data['customers'] = Customer::all();
         $data['category'] = Category::all();
 
         return view('admin.orders.create', $data);
     }
 
     public function save(Request $request){
-        $save_data = new Product();
+        $save_data = new Order();
         $save_data->image = ' ';
         $save_data->category_id = $request->category_id;
         $save_data->brand_id = $request->brand_id;
@@ -42,7 +55,7 @@ class OrderController extends Controller
 
     public function edit(int $id){
         $data['product'] = Product::find($id);
-        $data['brands'] = Brand::all();
+        $data['user'] = Auth()->id();
         $data['category'] = Category::all();
 
         return view('admin.orders.edit', $data);
@@ -71,5 +84,11 @@ class OrderController extends Controller
             $remove->delete();
         }
         return redirect()->back();
+    }
+    public function view(Request $request){
+        $data['product'] = Product::find($id);
+        $data['category'] = Category::all();
+
+        return view('admin.orders.view', $data);
     }
 }

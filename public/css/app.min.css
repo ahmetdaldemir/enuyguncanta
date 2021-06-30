@@ -1220,10 +1220,10 @@ body[data-layout=horizontal][data-layout-size=boxed] .navbar-header {
 
 /*!
  * Waves v0.7.6
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014-2018 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE */
 
 .waves-effect {
@@ -2669,8 +2669,8 @@ input[switch=dark]:checked + label {
   font-family: "summernote";
   font-style: normal;
   font-weight: normal;
-  src: url("/fonts/summernote.eot");
-  src: url("/fonts/summernote.eot?#iefix") format("embedded-opentype"), url("/fonts/summernote.woff?") format("woff"), url("/fonts/summernote.ttf?") format("truetype");
+  src: url("/public/fonts/summernote.eot");
+  src: url("/public/fonts/summernote.eot?#iefix") format("embedded-opentype"), url("/public/fonts/summernote.woff?") format("woff"), url("/public/fonts/summernote.ttf?") format("truetype");
 }
 
 /* Dropzone */

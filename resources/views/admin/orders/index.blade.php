@@ -20,45 +20,57 @@
         @endcomponent
     </div>
     <!-- end page title -->
-
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="mt-0 header-title">Siparişler {{$user_id}}
+                    <a href="/admin/orders/create" class="btn btn-primary float-right">Sipariş Ekle</a>
+                </h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                    <div class="col-12">
-                    <h4 class="mt-0 header-title">Siparişler
-                        <a href="/admin/customers/create" class="btn btn-primary float-right">Müşteri Ekle</a>
-                    </h4>
-                    </div>
-                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover mb-0">
                             <thead>
                             <tr>
-                                <th><input type="text" name="search_name" class="form-control" placeholder="Ad Soyad"></th>
-                                <th><input type="text" name="search_name" class="form-control" placeholder="Ad Soyad"></th>
-                                <th><input type="text" name="search_name" class="form-control" placeholder="Ad Soyad"></th>
+                                <th><input type="text" name="search_name" class="form-control" placeholder="Adı Soyadı"></th>
+                                <th><input type="text" name="search_tel" class="form-control" placeholder="Telefon"></th>
+                                <th>
+                                    <select class="form-control" name="search_status" id="">
+                                        <option value="">-- Sipariş Durumu --</option>
+                                        @foreach($orderstatus as $status)
+                                        <option value="{{$status->id}}">{{$status->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </th>
+                                <th></th>
                                 <th>
                                     <a href="{{ url('/admin/customers/edit') }}" class="btn btn-primary btn-sm">Arama Yap</a>
                                 </th>
                             </tr>
                             <tr>
                                 <th>Ad Soyad</th>
-                                <th></th>
-                                <th>Mail</th>
+                                <th>Telefon</th>
+                                <th>Sipariş Durumu</th>
+                                <th>Tutar</th>
                                 <th>#</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($orders as $result)
                                 <tr>
-                                    <td>{{$result->firstname.' '.$result->lastname}}</td>
+                                    <td>{{$result->firstname. ' '.$result->lastname}}</td>
+                                    <td>{{$result->tel}}</td>
                                     <td>{{$result->email}}</td>
                                     <td>{{$result->email}}</td>
-                                    <td class="col-2">
-                                        <a href="{{ url('/admin/customers/edit', ['id' => $result->id]) }}" class="btn btn-primary btn-sm">Düzenle</a>
-                                        <a href="{{ url('/admin/customers/remove', ['id' => $result->id]) }}" class="btn btn-danger btn-sm">Sil</a>
+                                    <td>
+                                        <a href="{{ url('/admin/orders/view', ['id' => $result->id]) }}" target="_blank" class="btn btn-success btn-sm"><i class="far fa-eye"></i> Görüntüle</a>
+                                        <a href="{{ url('/admin/orders/edit', ['id' => $result->id]) }}" class="btn btn-primary btn-sm">Düzenle</a>
+                                        <a href="{{ url('/admin/orders/remove', ['id' => $result->id]) }}" class="btn btn-danger btn-sm">Sil</a>
                                     </td>
                                 </tr>
                             @endforeach

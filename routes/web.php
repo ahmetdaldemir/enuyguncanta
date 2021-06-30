@@ -47,6 +47,13 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('catalog/categories/edit/{id}', 'CategoryController@edit');
     Route::post('catalog/categories/update', 'CategoryController@update');
     Route::get('catalog/categories/remove/{id}', 'CategoryController@remove');
+    //Order Status
+    Route::get('catalog/orderstatus', 'OrderStatusController@index');
+    Route::get('catalog/orderstatus/create', 'OrderStatusController@create');
+    Route::post('catalog/orderstatus/save', 'OrderStatusController@save');
+    Route::get('catalog/orderstatus/edit/{id}', 'OrderStatusController@edit');
+    Route::post('catalog/orderstatus/update', 'OrderStatusController@update');
+    Route::get('catalog/orderstatus/remove/{id}', 'OrderStatusController@remove');
     //Orders
     Route::get('orders', 'OrderController@index');
     Route::get('orders/create', 'OrderController@create');
@@ -54,6 +61,26 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('orders/edit/{id}', 'OrderController@edit');
     Route::get('orders/update', 'OrderController@update');
     Route::get('orders/remove/{id}', 'OrderController@remove');
+    Route::get('orders/view/{id}', 'OrderController@view');
+    //Users
+    Route::get('users', 'UserController@index');
+    Route::get('users/create', 'UserController@create');
+    Route::post('users/save', 'UserController@save');
+    Route::get('users/edit/{id}', 'UserController@edit');
+    Route::post('users/update', 'UserController@update');
+    Route::get('users/remove/{id}', 'UserController@remove');
+    //Shipment
+    Route::get('catalog/shipment', 'ShipmentCompanies@index');
+    Route::get('catalog/shipment/create', 'ShipmentCompanies@create');
+    Route::post('catalog/shipment/save', 'ShipmentCompanies@save');
+    Route::get('catalog/shipment/edit/{id}', 'ShipmentCompanies@edit');
+    Route::post('catalog/shipment/update', 'ShipmentCompanies@update');
+    Route::get('catalog/shipment/remove/{id}', 'ShipmentCompanies@remove');
+    //Orders
+    Route::get('settings', 'SettingsController@index');
+    Route::get('settings/update', 'SettingsController@update');
+    //Shipmentss
+    Route::get('shipments', 'ShipmentController@index');
 });
 
 //require __DIR__.'/auth.php';

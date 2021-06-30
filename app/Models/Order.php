@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    public function all_status()
+    {
+        OrderStatu::all();
+    }
 }
 
 
@@ -23,7 +28,7 @@ class OrderHistory extends Model
     public $timestamps = false;
 }
 
-class OrderStatus extends Model
+class OrderStatu extends Model
 {
     use HasFactory;
 }

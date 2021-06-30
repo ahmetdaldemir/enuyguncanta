@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8252cfef-8d2d-4242-8f71-99d071764058" name="enuyguncanta.ml" url="http://enuyguncanta.ml">
+        <fileTransfer rootFolder="/public_html" host="enuyguncanta.ml" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
