@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Model;
+use App\Services\Upload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProductController extends Controller
 {
@@ -34,7 +36,12 @@ class ProductController extends Controller
         $save_data->price1 = $request->price1;
         $save_data->quantity = $request->quantity;
         $save_data->description = '';
+        if($request->hasFile('image')) {
+            $service = new Upload($request, $this->module_name);
+            $save_data->image  = $service->getImage();
+        }
         $save_data->save();
+
 
         return redirect("admin/products");
     }
@@ -57,6 +64,13 @@ class ProductController extends Controller
         $save_data->barcode = $request->barcode;
         $save_data->price1 = $request->price1;
         $save_data->quantity = $request->quantity;
+
+        if($request->hasFile('image')) {
+            $service = new Upload($request, "product");
+            $save_data->image  = $service->getImage();
+        }else{
+            $save_data->image  = $request->old_data;
+        }
         $save_data->description = '';
         $save_data->save();
 
@@ -71,4 +85,39 @@ class ProductController extends Controller
         }
         return redirect()->back();
     }
+
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [ // <---
+            'stock_code' => 'unique:products|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'type' => "warning",
+                'message' => 'This Using Stock Code'
+            ], 200);
+        }
+
+        $save_data = new Product();
+        $save_data->image = ' ';
+        $save_data->category_id = 1;
+        $save_data->brand_id = 1;
+        $save_data->name = $request->name;
+        $save_data->stock_code = $request->stock_code;
+        $save_data->barcode = $request->barcode;
+        $save_data->price1 = $request->price1;
+        $save_data->quantity = $request->quantity;
+        $save_data->description = '';
+        $saved = $save_data->save();
+
+
+        return response()->json([
+            'type' => "success",
+            'message' => ($saved) ? 'Kayıt Başarılı' : 'Tekrar Deneyiniz'
+        ], 200);
+
+    }
+
 }

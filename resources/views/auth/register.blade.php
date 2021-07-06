@@ -1,4 +1,4 @@
-@extends('layouts.auth-master')
+@extends('admin.layouts.auth-master')
 
 @section('title', 'Register')
 
@@ -53,7 +53,7 @@
                                         <label for="userpassword">{{ __('Confirm Password') }}</label>
                                     <input type="password" name="password_confirmation" class="form-control" id="userconfirmpassword" placeholder="Confirm password">
                                     </div>
-                                    
+
                                     <div class="form-group row mt-4">
                                         <div class="col-12 text-right">
                                             <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>

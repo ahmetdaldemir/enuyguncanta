@@ -58,14 +58,13 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{ URL::asset('/images/users/user-4.jpg')}}"
-                            alt="Header Avatar">
+                        <i style="font-size: 30px;" class="fas fa-user-circle"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- item-->
                         <a class="dropdown-item d-block" href="/admin/settings"><i class="ti-settings"></i> &nbsp; Ayarlar</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-power font-size-17 text-muted align-middle mr-1 text-danger"></i> {{ __('Logout') }}</a>
+                        <a class="dropdown-item text-danger" href="/logout"><i class="mdi mdi-power font-size-17 text-muted align-middle mr-1 text-danger"></i> {{ __('Oturumu Kapat') }}</a>
                     </div>
                 </div>
             </div>
@@ -134,8 +133,9 @@
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="topnav-email">
                                     <a href="/admin/catalog/brands" class="dropdown-item">Markalar</a>
                                     <a href="/admin/catalog/categories" class="dropdown-item">Kategoriler</a>
-                                    <a href="/admin/catalog/attributes" class="dropdown-item">Ürün Özellikleri</a>
-                                    <a href="/admin/catalog/variants" class="dropdown-item">Ürün Varyant</a>
+                                    <a href="/admin/catalog/color" class="dropdown-item">Renkler</a>
+{{--                                    <a href="/admin/catalog/attributes" class="dropdown-item">Ürün Özellikleri</a>--}}
+{{--                                    <a href="/admin/catalog/variants" class="dropdown-item">Ürün Varyant</a>--}}
                                     <a href="/admin/catalog/orderstatus" class="dropdown-item">Sipariş Durumları</a>
                                     <a href="/admin/catalog/shipment" class="dropdown-item">Kargo Firmaları</a>
                                 </div>

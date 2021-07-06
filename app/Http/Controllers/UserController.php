@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -30,7 +31,7 @@ class UserController extends Controller
         $shipment = new User();
         $shipment->name = $request->name;
         $shipment->email = $request->email;
-        $shipment->password = $request->password;
+        $shipment->password = Hash::make($request->password);
         $shipment->role = 'admin';
         $shipment->save();
         return redirect("admin/users");
@@ -41,7 +42,7 @@ class UserController extends Controller
         $shipment =  User::find($request->id);
         $shipment->name = $request->name;
         $shipment->email = $request->email;
-        $shipment->password = $request->password;
+        $shipment->password =  Hash::make($request->password);
         $shipment->save();
         return redirect("admin/users");
     }

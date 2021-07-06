@@ -21,6 +21,7 @@
     </div>
     <!-- end page title -->
 
+    <div ng-controller="mainController">
     <div class="row">
         <div class="col-12">
             <form method="post" action="/admin/customers/update" enctype="multipart/form-data">
@@ -61,19 +62,20 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Şehir</label>
-                            <div class="col-sm-10">
-                                <select name="city" class="form-control">
-                                    <option disabled selected hidden>Şehirler</option>
-                                    <option value="1">İstanbul</option>
+                            <div class="col-sm-10" ng-init="cities()">
+                                <select ng-model="cityId" ng-change="cityChange()" name="city" class="form-control"
+                                        ng-change="cityChange()">
+                                    <option disabled selected>Şehirler</option>
+                                    <option ng-repeat="item in cities" value="@{{item.id}}">@{{item.name}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Semt</label>
                             <div class="col-sm-10">
-                                <select name="state" class="form-control">
+                                <select name="state" id="state" class="form-control">
                                     <option disabled selected hidden>Semtler</option>
-                                    <option value="1">Sarıyer</option>
+                                    <option ng-repeat="item in state" value="1">@{{ item.name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -86,5 +88,41 @@
         </div>
         <!-- end col -->
     </div>
+    </div>
     <!-- end row -->
+<script>
+    app.controller("mainController", function ($scope, $http, $httpParamSerializerJQLike, $window) {
+        $scope.cities = function () {
+            $http({
+                method: 'GET',
+                url: '/api/v1/cities',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function successCallback(response) {
+                $scope.cities = response.data;
+            });
+        }
+
+        $scope.cityChange = function () {
+            $("#state").html('');
+            let cityId = $scope.cityId;
+            $http({
+                method: 'GET',
+                url: '/api/v1/get_state/' + cityId + '',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function successCallback(response) {
+                $.each(response.data, function (index, value) {
+                    $('#state').append($('<option>', {
+                        value: value.id,
+                        text: value.name
+                    }));
+                });
+            });
+        }
+        // MainCtrl.$inject = ['$http'];
+    });
+</script>
 @endsection

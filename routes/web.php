@@ -10,13 +10,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'DashboardController@index');
+Auth::routes();
+
+
+// when render first time project redirect
+Route::get('/', function () {
+    return redirect('login');
+});
 
 Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']], function () {
-    Route::get('/', function () {
-        return view('admin.dashboard.index');
-    })->name('dashboard');
+
+    Route::get('/', 'DashboardController@index');
+
+
     //Customers
+
     Route::get('customers', 'CustomerController@index');
     Route::get('customers/create', 'CustomerController@create');
     Route::post('customers/save', 'CustomerController@save');
@@ -40,6 +48,13 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('catalog/brands/edit/{id}', 'BrandController@edit');
     Route::post('catalog/brands/update', 'BrandController@update');
     Route::get('catalog/brands/remove/{id}', 'BrandController@remove');
+    //Colors
+    Route::get('catalog/color', 'ColorController@index');
+    Route::get('catalog/color/create', 'ColorController@create');
+    Route::post('catalog/color/save', 'ColorController@save');
+    Route::get('catalog/color/edit/{id}', 'ColorController@edit');
+    Route::post('catalog/color/update', 'ColorController@update');
+    Route::get('catalog/color/remove/{id}', 'ColorController@remove');
     //Category
     Route::get('catalog/categories', 'CategoryController@index');
     Route::get('catalog/categories/create', 'CategoryController@create');
@@ -54,6 +69,7 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('catalog/orderstatus/edit/{id}', 'OrderStatusController@edit');
     Route::post('catalog/orderstatus/update', 'OrderStatusController@update');
     Route::get('catalog/orderstatus/remove/{id}', 'OrderStatusController@remove');
+
     //Orders
     Route::get('orders', 'OrderController@index');
     Route::get('orders/create', 'OrderController@create');
@@ -62,6 +78,8 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('orders/update', 'OrderController@update');
     Route::get('orders/remove/{id}', 'OrderController@remove');
     Route::get('orders/view/{id}', 'OrderController@view');
+    Route::get('orders/export/', 'OrderController@export');
+
     //Users
     Route::get('users', 'UserController@index');
     Route::get('users/create', 'UserController@create');
@@ -76,12 +94,14 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('catalog/shipment/edit/{id}', 'ShipmentCompanies@edit');
     Route::post('catalog/shipment/update', 'ShipmentCompanies@update');
     Route::get('catalog/shipment/remove/{id}', 'ShipmentCompanies@remove');
-    //Orders
+    //Settings
     Route::get('settings', 'SettingsController@index');
     Route::get('settings/update', 'SettingsController@update');
     //Shipmentss
     Route::get('shipments', 'ShipmentController@index');
+
+
 });
 
 //require __DIR__.'/auth.php';
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('logout', 'LoginController@logout');

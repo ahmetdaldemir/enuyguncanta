@@ -81,6 +81,13 @@
                                 <input class="form-control" type="text" name="quantity" value="{{$product->quantity}}" id="example-text-input" placeholder="Stok Miktarı">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Resim</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="file" name="image" id="example-text-input">
+                                <input class="form-control" type="hidden" name="old_data" value="{{$product->image}}">
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary float-right">Güncelle</button>

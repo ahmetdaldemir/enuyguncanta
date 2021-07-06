@@ -1,0 +1,10 @@
+
+CWeb:BoldAndItalicTagsCheck."Replace this <i> tag by <em>.(‹öÆÎ
+GWeb:BoldAndItalicTagsCheck@"!Replace this <b> tag by <strong>.(§æðŽ
+GWeb:BoldAndItalicTagsCheckG"!Replace this <b> tag by <strong>.(§æðŽ
+GWeb:BoldAndItalicTagsCheckN"!Replace this <b> tag by <strong>.(§æðŽ
+GWeb:BoldAndItalicTagsCheckh"!Replace this <b> tag by <strong>.(§æðŽ
+MWeb:TableWithoutCaptionCheckp" Add a description to this table.(Üïð þÿÿÿÿ
+l Web:TableHeaderHasIdOrScopeChecks";Add either an 'id' or a 'scope' attribute to this <th> tag.(ö œÂüÿÿÿÿ
+l Web:TableHeaderHasIdOrScopeCheckt";Add either an 'id' or a 'scope' attribute to this <th> tag.(êÐß®øÿÿÿÿ
+g Web:TableHeaderHasIdOrScopeChecku";Add either an 'id' or a 'scope' attribute to this <th> tag.(É“š¼

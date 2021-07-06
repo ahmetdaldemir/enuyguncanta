@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->string("name")->nullable();
             $table->string("stock_code")->nullable();
             $table->string("barcode")->nullable();
-            $table->unsignedBigInteger("brand_id")->index();
+            $table->unsignedBigInteger("brand_id")->index()->default(1);
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-            $table->unsignedBigInteger("category_id")->index();
+            $table->unsignedBigInteger("category_id")->index()->default(1);
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string("image")->nullable();
             $table->double("price1",10,2)->nullable();

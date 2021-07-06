@@ -18,14 +18,11 @@ class AdminMidleware
     public function handle(Request $request, Closure $next)
     {
         $admin = Auth::user();
-        if($admin != null)
-        {
-            if ($admin->role != "admin")
-            {
-                return redirect('/');
-            }
-        }
 
+        if(empty($admin))
+        {
+            return redirect()->route('login');
+        }
 
         return $next($request);
     }

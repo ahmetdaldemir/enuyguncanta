@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'v1'], function () {
+    Route::resource('save_customer', 'CustomerController');
+    Route::resource('save_product', 'ProductController');
+    Route::resource('cities', 'CityController');
+    Route::get('get_state/{id}', 'CityController@getstate');
+    Route::post('get_customer', 'ApiController@getcustomer');
+    Route::post('get_products', 'ApiController@getproducts');
+//    Route::resource('get_customer', 'ApiController');
+});

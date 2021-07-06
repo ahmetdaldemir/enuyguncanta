@@ -50,7 +50,7 @@
                             <tbody>
                             @foreach($products as $result)
                                 <tr>
-                                    <td>{{$result->image}}</td>
+                                    <td><img src="/public/upload/{{$result->image}}" style="width: 50px"/></td>
                                     <td>{{$result->name}}</td>
                                     <td>{{$result->stock_code}}</td>
                                     <td>{{$result->barcode}}</td>
