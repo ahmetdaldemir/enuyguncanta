@@ -55,12 +55,35 @@
 
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label>Toplam Fiyat</label>
+                                    <input type="text" class="form-control" name="custom_amount">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Ödeme Tipi</label>
+                                    <select class="form-control" name="payment_type">
+                                        <option value="credit_card">Kredi Kartı</option>
+                                        <option value="cash">Banka Havalesi</option>
+                                        <option value="pay_of_door">Kapıda Ödeme</option>
+                                    </select>
+                                 </div>
+                                <div class="col-md-4">
+                                    <label>Kargo</label>
+                                    <select class="form-control" name="shipment_id">
+                                        <?php foreach ($shipmentcompanies as $val){ ?>
+                                        <option value="<?=$val->id?>"><?=$val->name?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+
                             <fieldset class="scheduler-border">
                                 <legend class="scheduler-border">Müşteri ile farklı olması halinde doldurunuz</legend>
                                     <div class="form-group row">
                                         <label for="example-text-customer" class="col-sm-2 col-form-label">Müşteri Adı  Soyadı</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="customer-m  name"  id="example-text-customer" placeholder="Telefon">
+                                            <input class="form-control" type="text" name="name"  id="example-text-customer" placeholder="Telefon">
                                             <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
                                         </div>
                                     </div>
@@ -92,8 +115,7 @@
                                         <label class="col-sm-2 col-form-label">İlçe</label>
                                         <div class="col-sm-10">
                                             <select name="state" id="state" class="form-control">
-                                                <option disabled selected hidden>Semtler</option>
-                                                <option ng-repeat="item in state" value="1">@{{ item.name }}</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -105,6 +127,15 @@
                                     </div>
                                 </div>
                             </fieldset>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="example-text-mail" class="col-sm-2 col-form-label">Açıklama</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control"   name="description" id="example-text-mail" ></textarea>
+                                    <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
+                                </div>
+                            </div>
+                        </hr>
                             <div class="form-group row">
                                 <label for="example-text-mail" class="col-sm-2 col-form-label">Ürünler</label>
                                 <div class="col-sm-10">
@@ -152,8 +183,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="card-footer">
                                 <button class="btn btn-primary float-right">Siparişi Kaydet</button>
                             </div>
@@ -222,9 +251,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Semt</label>
                                 <div class="col-sm-10">
-                                    <select name="state" id="state" class="form-control">
-                                        <option disabled selected hidden>Semtler</option>
-                                        <option ng-repeat="item in state" value="1">@{{ item.name }}</option>
+                                    <select name="state" id="state1" class="form-control">
+
                                     </select>
                                 </div>
                             </div>
@@ -351,6 +379,7 @@
 
             $scope.cityChange = function () {
                 $("#state").html('');
+                $("#state1").html('');
                 let cityId = $scope.cityId;
                 $http({
                     method: 'GET',
@@ -360,11 +389,13 @@
                     }
                 }).then(function successCallback(response) {
                     $.each(response.data, function (index, value) {
-                        $('#state').append($('<option>', {
+                        $('#state,#state1').append($('<option>', {
                             value: value.id,
                             text: value.name
                         }));
                     });
+
+
                 });
             }
             MainCtrl.$inject = ['$http'];
@@ -434,7 +465,7 @@
                 $("#theProductsUl_" + index).hide();
 
                 html = '<tr id="product-value-row' + id + '"><input  type="hidden" name="product['+id+'][id]"   value="' + id + '"  >';
-                html += '<td colspan="2"><input class="form-control"  type="text" name="product['+id+'][name]" data-product_id="" id="theProducts_' + id + '" value="' + name + '" readonly></td>';
+                html += '<td colspan="2"><input class="form-control"  type="text" name="product['+id+'][name]" id="theProducts_' + id + '" value="' + name + '" readonly></td>';
                 html += '<td><input class="form-control" type="text" name="product['+id+'][quantity]" id="theProductsQuantity_' + id + '" placeholder="Adet" autocomplete="off"></td>';
                 html += '<td><button onclick="$(\'#product-value-row' + id + '\').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>';
                 html += '</tr>';
@@ -468,20 +499,20 @@
 
         });
     </script>
-    <script>
-        var product_row = 2;
-        $(document).on('click', '#button-product', function () {
-            html = '<tr id="product-value-row' + product_row + '">';
-            html += '<td colspan="2"><input class="form-control" autocomplete="off" ng-keyup="fetchProducts(product_row)"  ng-model="searchProducts" type="text" name="name" data-product_id="" id="theProducts_' + product_row + '" placeholder="Ürün Adı" autocomplete="off"></td>';
-            html += '<td><input class="form-control" type="text" name="code" id="theProductsStockCode_' + product_row + '" placeholder="Ürün Kodu" autocomplete="off"></td>';
-            html += '<td><input class="form-control" type="text" name="quentity" id="theProductsQuantity_' + product_row + '" placeholder="Adet" autocomplete="off"></td>';
-            html += '<td></td>';
-            html += '<td><button onclick="$(\'#product-value-row' + product_row + '\').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>';
-            html += '</tr>';
-            $('#product-list tbody').append(html);
-            product_row++;
+{{--    <script>--}}
+{{--        var product_row = 0;--}}
+{{--        $(document).on('click', '#button-product', function () {--}}
+{{--            html = '<tr id="product-value-row' + product_row + '">';--}}
+{{--            html += '<td colspan="2"><input class="form-control" autocomplete="off" ng-keyup="fetchProducts(product_row)"  ng-model="searchProducts" type="text" name="name" data-product_id="" id="theProducts_' + product_row + '" placeholder="Ürün Adı" autocomplete="off"></td>';--}}
+{{--            html += '<td><input class="form-control" type="text" name="code" id="theProductsStockCode_' + product_row + '" placeholder="Ürün Kodu" autocomplete="off"></td>';--}}
+{{--            html += '<td><input class="form-control" type="text" name="quentity" id="theProductsQuantity_' + product_row + '" placeholder="Adet" autocomplete="off"></td>';--}}
+{{--            html += '<td></td>';--}}
+{{--            html += '<td><button onclick="$(\'#product-value-row' + product_row + '\').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>';--}}
+{{--            html += '</tr>';--}}
+{{--            $('#product-list tbody').append(html);--}}
+{{--            product_row++;--}}
 
-            $("#theProductsUl_1").clone().insertAfter("#product-value-row" + product_row + " #theProducts_" + product_row);
-        });
-    </script>
+{{--            $("#theProductsUl_1").clone().insertAfter("#product-value-row" + product_row + " #theProducts_" + product_row);--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection

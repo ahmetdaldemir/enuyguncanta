@@ -30,9 +30,11 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('status_id')->index();
             $table->foreign('status_id')->references('id')->on('order_status')->onDelete('cascade');
             $table->double('amount',10,2);
+            $table->double('custom_amount',10,2);
             $table->string('fullname')->nullable();
             $table->string('tel')->nullable();
             $table->string('mail')->nullable();
+            $table->text('description')->nullable();
             $table->text('address')->nullable();
             $table->unsignedBigInteger('city_id')->index();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');

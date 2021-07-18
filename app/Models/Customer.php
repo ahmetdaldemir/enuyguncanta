@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city', 'id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state', 'id');
+    }
 }

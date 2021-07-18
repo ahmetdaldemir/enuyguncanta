@@ -26,6 +26,7 @@
             <div class="col-12">
                 <form method="post" action="/admin/orders/update" enctype="multipart/form-data" autocomplete="off">
                     @csrf
+                    <input name="id" value="<?=$order->id?>" type="hidden" />
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Sipariş Düzenle</h4>
@@ -33,14 +34,13 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Müşteri </label>
                                 <div class="col-sm-10">
-
                                     <div class="input-group mb-3">
                                         <input data-customer_id="" type="search"
                                                class="form-control nav-search nav-search-field ng-pristine ng-valid ng-empty ng-touched"
                                                id="theSearch" autocomplete="off" ng-keyup="fetchUsers()"
                                                ng-model="searchText" ng-click="searchboxClicked($event);"
-                                               name="searchkeyword" method="get">
-                                        <input type="hidden" id="theSearchHidden" name="customer_id" />
+                                               name="searchkeyword" method="get"  value="{{$order->fullname}}" >
+                                        <input type="hidden" id="theSearchHidden" name="customer_id" value="{{$order->customer_id}}" />
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-primary waves-effect waves-light"
                                                     type="button" data-toggle="modal" data-target=".customer"><i
@@ -55,26 +55,48 @@
 
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label>Toplam Fiyat</label>
+                                    <input type="text" class="form-control" value="{{$order->custom_amount}}" name="custom_amount">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Ödeme Tipi</label>
+                                    <select class="form-control" name="payment_type">
+                                        <option <?php if($order->payment_type == 'credit_card'){echo "selected";} ?> value="credit_card">Kredi Kartı</option>
+                                        <option <?php if($order->payment_type == 'cash'){echo "selected";} ?> value="cash">Banka Havalesi</option>
+                                        <option <?php if($order->payment_type == 'pay_of_door'){echo "selected" ;} ?> value="pay_of_door">Kapıda Ödeme</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Kargo</label>
+                                    <select class="form-control" name="shipment_companies_id">
+                                        <?php foreach ($shipmentcompanies as $val){ ?>
+                                        <option <?php if($order->shipment_companies_id == $val->id){echo "selected";} ?> value="<?=$val->id?>"><?=$val->name?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
                             <fieldset class="scheduler-border">
                                 <legend class="scheduler-border">Müşteri ile farklı olması halinde doldurunuz</legend>
                                 <div class="form-group row">
-                                    <label for="example-text-customer" class="col-sm-2 col-form-label">Müşteri Adı  Soyadı</label>
+                                    <label for="example-text-customer" class="col-sm-2 col-form-label">Müşteri Adı Soyadı</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="customer-m  name"  id="example-text-customer" placeholder="Telefon">
+                                        <input class="form-control" type="text" name="fullname"  id="example-text-customer" value="{{$order->fullname}}">
                                         <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="example-text-tel" class="col-sm-2 col-form-label">Telefon</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="tel" id="example-text-tel"  placeholder="Telefon">
+                                        <input class="form-control" type="text" name="tel" id="example-text-tel"  value="{{$order->tel}}">
                                         <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="example-text-mail" class="col-sm-2 col-form-label">E-posta</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="email" id="example-text-mail"  placeholder="E-posta" >
+                                        <input class="form-control" type="text" name="email" id="example-text-mail"  value="{{$order->email}}" >
                                         <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
                                     </div>
                                 </div>
@@ -100,7 +122,7 @@
                                 <div class="form-group row">
                                     <label for="example-text-mail" class="col-sm-2 col-form-label">E-posta</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="email" id="example-text-mail"  placeholder="E-posta" >
+                                        <input class="form-control" type="text" name="email" id="example-text-mail"  value="{{$order->email}}" >
                                         <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
                                     </div>
                                 </div>
@@ -119,34 +141,29 @@
                                             </thead>
 
                                             <tbody>
-                                            <?php foreach($products as $product){?>
+                                            <?php foreach($products as $product){ ?>
                                                 <tr id="product-value-rowproduct_row">
-                                                <td colspan="2"><input class="form-control" autocomplete="off" type="text" name="name" data-product_id="" id="theProducts_' + product_row + '" placeholder="Ürün Adı" autocomplete="off"></td>
-                                                <td><input class="form-control" type="text" name="code" id="theProductsStockCode_product_row" placeholder="Ürün Kodu" autocomplete="off"></td>
-                                                <td><input class="form-control" type="text" name="quentity" id="theProductsQuantity_product_row" placeholder="Adet" autocomplete="off"></td>
+                                                <td colspan="2"><input class="form-control" autocomplete="off" type="text" name="name" data-product_id="" id="theProducts_' + product_row + '" value="<?php echo \App\Models\Product::find($product->product_id)->name; ?>" autocomplete="off"></td>
+                                                <td><input class="form-control" type="text" name="code" id="theProductsStockCode_product_row" placeholder="Ürün Kodu" value=" <?php echo \App\Models\Product::find($product->product_id)->stock_code; ?>" autocomplete="off"></td>
+                                                <td><input class="form-control" type="text" name="quantity" id="theProductsQuantity_product_row" placeholder="Adet"  value="<?=$product->quantity?>"  autocomplete="off"></td>
                                                 <td></td>
                                                 <td><button onclick="$('#product-value-rowproduct_row').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>
                                                 </tr>
-                                            <?php }?>
+                                            <?php } ?>
                                             </tbody>
                                             <tfoot>
                                             <tr>
                                                 <td colspan="5">
-                                                    <input ng-keyup="fetchProducts(1)" ng-model="searchProducts"
-                                                           data-product_id="" class="form-control" type="text"
-                                                           name="name" id="theProducts_1" placeholder="Ürün Adı"  autocomplete="off" />
-                                                    <ul id="theProductsUl_1"
-                                                        style="    width: 100%;  position: relative;">
-                                                        <li ng-click="addProductsInput(item.id,item.name,item.stock_code,1)"
-                                                            ng-repeat="item in productsResult">@{{item.name}}
-                                                        </li>
+                                                    <input ng-keyup="fetchProducts(1)" ng-model="searchProducts" data-product_id="" class="form-control" type="text" name="name" id="theProducts_1" placeholder="Ürün Adı"  autocomplete="off" />
+                                                    <ul id="theProductsUl_1" style="width: 100%;  position: relative;">
+                                                        <li ng-click="addProductsInput(item.id,item.name,item.stock_code,1)" ng-repeat="item in productsResult">@{{item.name}}</li>
                                                     </ul>
                                                 </td>
                                                 <td>
-                                                    {{--                                                    <button type="button" id="button-product"--}}
-                                                    {{--                                                            class="btn btn-success waves-effect waves-light"> + Ürünü--}}
-                                                    {{--                                                        Düzenle--}}
-                                                    {{--                                                    </button>--}}
+                                                    {{-- <button type="button" id="button-product"--}}
+                                                    {{--         class="btn btn-success waves-effect waves-light"> + Ürünü--}}
+                                                    {{--     Düzenle--}}
+                                                    {{-- </button>--}}
                                                     <button type="button"
                                                             class="btn btn-primary waves-effect waves-light"
                                                             data-toggle="modal" data-target=".product"> +
@@ -328,6 +345,7 @@
                     $(".customer").modal("hide");
                 });
             }
+
             $scope.addProduct = function () {
                 $http({
                     method: 'POST',
@@ -375,6 +393,7 @@
                     });
                 });
             }
+
             MainCtrl.$inject = ['$http'];
 
             function MainCtrl($http) {
@@ -447,7 +466,6 @@
                 html += '<td><button onclick="$(\'#product-value-row' + id + '\').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>';
                 html += '</tr>';
                 $('#product-list tbody').append(html);
-
             }
 
             $scope.fetchProducts = function (id) {
@@ -458,12 +476,12 @@
                 if (searchText_len > 0) {
                     $scope.data = [];
                     $http({
-                        method: "POST", // method bu sefer post
-                        url: "/api/v1/get_products", // urlmiz
-                        data: $httpParamSerializerJQLike({ // serialize etmek iÃ§in kullandÄ±ÄŸÄ±mÄ±z method
+                        method: "POST",
+                        url: "/api/v1/get_products",
+                        data: $httpParamSerializerJQLike({
                             searchProducts: $scope.searchProducts,
                         }),
-                        headers: { // gÃ¶nderme tipimiz burasÄ± Ã§ok Ã¶nemli
+                        headers: {
                             "Content-Type": "application/x-www-form-urlencoded"
                         }
                     }).then(function (response) {

@@ -4,22 +4,12 @@
             <div class="float-left">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
-                    <a href="/admin/" class="logo logo-dark">
-                        <span class="logo-sm">
-                            <img src="{{ URL::asset('/images/logo-sm.png')}}" alt="" height="22">
-                        </span>
-                        <span class="logo-lg">
-                            <img src="{{ URL::asset('/images/logo-dark.png')}}" alt="" height="19">
-                        </span>
+                    <a style="    font-size: 20px;font-weight: 800;" href="/admin/" class="logo logo-dark">
+                        ENUYGUN ÇANTA
                     </a>
 
-                    <a href="/admin/" class="logo logo-light">
-                        <span class="logo-sm">
-                            <img src="{{ URL::asset('/images/logo-sm.png')}}" alt="" height="22">
-                        </span>
-                        <span class="logo-lg">
-                            <img src="{{ URL::asset('/images/logo-light.png')}}" alt="" height="19">
-                        </span>
+                    <a style="    font-size: 20px;font-weight: 800;"  href="/admin/" class="logo logo-light">
+                        ENUYGUN ÇANTA
                     </a>
                 </div>
 
@@ -115,7 +105,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/orders">
+                                <a class="nav-link" href="/admin/orders/index/1">
                                     <i class="ti-shopping-cart"></i>Siparişler
                                 </a>
                             </li>
@@ -137,7 +127,7 @@
 {{--                                    <a href="/admin/catalog/attributes" class="dropdown-item">Ürün Özellikleri</a>--}}
 {{--                                    <a href="/admin/catalog/variants" class="dropdown-item">Ürün Varyant</a>--}}
                                     <a href="/admin/catalog/orderstatus" class="dropdown-item">Sipariş Durumları</a>
-                                    <a href="/admin/catalog/shipment" class="dropdown-item">Kargo Firmaları</a>
+                                    <a href="/admin/shipmentscompanies" class="dropdown-item">Kargo Firmaları</a>
                                 </div>
                             </li>
                             <li class="nav-item">

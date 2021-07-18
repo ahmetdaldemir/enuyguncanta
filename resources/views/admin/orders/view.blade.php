@@ -78,51 +78,54 @@
                         <div class="col-12">
                             <div>
                                 <div class="p-2">
-                                    <h3 class="font-size-16"><strong>Order summary</strong></h3>
+                                    <h3 class="font-size-16"><strong>Ürünler</strong></h3>
                                 </div>
                                 <div class="">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
                                             <tr>
-                                                <td><strong>Item</strong></td>
-                                                <td class="text-center"><strong>Price</strong></td>
-                                                <td class="text-center"><strong>Quantity</strong>
-                                                </td>
-                                                <td class="text-right"><strong>Totals</strong></td>
+                                                <td><strong>Resim</strong></td>
+                                                <td><strong>Stok Kodu</strong></td>
+                                                <td><strong>Fiyat</strong></td>
+                                                <td><strong>Adet</strong></td>
+                                                <td class="text-right"><strong>Toplam</strong></td>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php foreach ($orderProduct as $line){ ?>
+
+                                            <?php foreach ($order->product as $line){ ?>
                                             <tr>
-                                                <td class="text-center"><?=$line->product->image?></td>
+                                                <td><img style="width: 50px" src="/public/upload/<?=$line->product->image?>" /></td>
                                                 <td><?=$line->product->stock_code?></td>
-                                                <td class="text-center"><?=$line->product->name?></td>
-                                                <td class="text-center"><?=$line->quantity?></td>
-                                                <td class="text-right"><?=$line->price?></td>
+                                                <td><?=$line->product->name?></td>
+                                                <td><?=$line->quantity?></td>
+                                                <td class="text-right"><?=number_format($line->price, 2)?> <i class="fa fa-lira-sign"></i> </td>
                                             </tr>
                                          <?php } ?>
+{{--                                            <tr>--}}
+{{--                                                <td class="thick-line"></td>--}}
+{{--                                                <td class="thick-line"></td>--}}
+{{--                                                <td class="thick-line text-center">--}}
+{{--                                                    <strong>Subtotal</strong></td>--}}
+{{--                                                <td class="thick-line text-right">$670.99</td>--}}
+{{--                                            </tr>--}}
+{{--                                            <tr>--}}
+{{--                                                <td class="no-line"></td>--}}
+{{--                                                <td class="no-line"></td>--}}
+{{--                                                <td class="no-line text-center">--}}
+{{--                                                    <strong>Shipping</strong></td>--}}
+{{--                                                <td class="no-line text-right">$15</td>--}}
+{{--                                            </tr>--}}
                                             <tr>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line text-center">
-                                                    <strong>Subtotal</strong></td>
-                                                <td class="thick-line text-right">$670.99</td>
-                                            </tr>
-                                            <tr>
+                                                <td class="no-line"></td>
                                                 <td class="no-line"></td>
                                                 <td class="no-line"></td>
                                                 <td class="no-line text-center">
-                                                    <strong>Shipping</strong></td>
-                                                <td class="no-line text-right">$15</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="no-line"></td>
-                                                <td class="no-line"></td>
-                                                <td class="no-line text-center">
-                                                    <strong>Total</strong></td>
+                                                    <strong>Toplam</strong></td>
                                                 <td class="no-line text-right">
-                                                    <h4 class="m-0"><?=$order->amount?></h4></td>
+                                                    <h4 class="m-0"> <?=number_format($order->amount, 2)?> <i class="fa fa-lira-sign"></i></h4>
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -131,7 +134,6 @@
                                     <div class="d-print-none">
                                         <div class="float-right">
                                             <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light mr-2"><i class="fa fa-print"></i></a>
-                                            <a href="#" class="btn btn-primary waves-effect waves-light">Send</a>
                                         </div>
                                     </div>
                                 </div>

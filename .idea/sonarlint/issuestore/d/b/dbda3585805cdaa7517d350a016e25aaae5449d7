@@ -1,5 +1,8 @@
 
-HWeb:BoldAndItalicTagsCheck*"Replace this <i> tag by <em>.(ú £¹ÿÿÿÿÿ
-MWeb:TableWithoutCaptionCheckU" Add a description to this table.(¼ëùÏşÿÿÿÿ
+OWeb:BoldAndItalicTagsCheckg"Replace this <i> tag by <em>.(‘ı»°ûÿÿÿÿ8Ñãº÷¨/
 ?	Web:S5256U"%Add "<th>" headers to this "<table>".(¼ëùÏşÿÿÿÿ
-DWeb:BoldAndItalicTagsCheck…"Replace this <i> tag by <em>.(Ş…£‚
+SWeb:ImgWithoutAltCheckc"%Add an "alt" attribute to this image.(Óµ˜“ÿÿÿÿÿ8Ñãº÷¨/
+MWeb:TableWithoutCaptionCheckU" Add a description to this table.(¼ëùÏşÿÿÿÿ
+JWeb:BoldAndItalicTagsCheck"Replace this <i> tag by <em>.(ÔìÒ8Ñãº÷¨/
+DWeb:BoldAndItalicTagsCheckˆ"Replace this <i> tag by <em>.(Ş…£‚
+HWeb:BoldAndItalicTagsCheck*"Replace this <i> tag by <em>.(ú £¹ÿÿÿÿÿ
