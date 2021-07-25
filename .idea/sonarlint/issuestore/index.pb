@@ -103,3 +103,7 @@ d
 4resources/views/admin/shipmentcompany/edit.blade.php,3\3\339d751819222b6e669f2d2e13d724396979f5d3
 H
 app/Services/GetCity.php,2\0\200a6b42b5bcca86fc47a05bfb72af79bbeef7db
+I
+app/Services/GetState.php,3\a\3a2b075efaf22f942369d5c678d5039ffdf5d16c
+K
+app/Services/GetBarcode.php,4\c\4cab8980fbcc2ba84e4cd8b2f1207bd38af55a93

@@ -38,6 +38,7 @@
                         <table class="table table-bordered table-hover mb-0">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Kategori</th>
                                 <th>#</th>
                             </tr>
@@ -45,6 +46,7 @@
                             <tbody>
                             @foreach($categories as $result)
                                 <tr>
+                                    <td>{{$result->id}}</td>
                                     <td>{{$result->name}}</td>
                                     <td class="col-2">
                                         <a href="{{ url('/admin/catalog/categories/edit', ['id' => $result->id]) }}" class="btn btn-primary btn-sm">Düzenle</a>
