@@ -107,3 +107,9 @@ I
 app/Services/GetState.php,3\a\3a2b075efaf22f942369d5c678d5039ffdf5d16c
 K
 app/Services/GetBarcode.php,4\c\4cab8980fbcc2ba84e4cd8b2f1207bd38af55a93
+h
+8resources/views/admin/catalog/categories/index.blade.php,5\3\536b24591cadcf84947352837dc291a4a49a6f3a
+H
+resources/views/test.php,9\0\90e32c73dc4479c3dd618c9d6ef37a5f4871e17e
+V
+&app/Http/Controllers/ApiController.php,d\d\ddca0ae47086c744fd1a72629a7513ffd51701f3

@@ -96,7 +96,7 @@ class OrderController extends Controller
         $orderupdate = Order::find($order_id);
         $orderupdate->amount = $amount;
         $orderupdate->save();
-        return redirect("admin/orders");
+        return redirect("admin/orders/index/1");
     }
 
     public function edit(int $id)
@@ -199,7 +199,7 @@ class OrderController extends Controller
 
 
             $shipmentnew = new ShipmentModel();
-            $shipmentnew->barcode =   $this->getBarcode( $content['barcode']);
+            $shipmentnew->barcode =   $content['barcode']; // $this->getBarcode( $content['barcode']);
             $shipmentnew->shipping_code = $content['barcode'];
             $shipmentnew->save();
         }
@@ -279,7 +279,7 @@ class OrderController extends Controller
     {
         $c = new GetBarcode($this->shipmentSettings,$shipmentCode);
         $x = json_decode($c->getContent(), TRUE);
-      dd($x);
+        dd($x);
     }
 
 

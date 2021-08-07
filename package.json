@@ -13,9 +13,9 @@
         "@tailwindcss/forms": "^0.2.1",
         "alpinejs": "^2.7.3",
         "autoprefixer": "^10.1.0",
-        "axios": "^0.21.1",
+        "axios": "^0.19",
         "cross-env": "^7.0",
-        "laravel-mix": "^6.0.25",
+        "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
         "postcss": "^8.2.1",
@@ -29,7 +29,6 @@
     "dependencies": {
         "@curiosityx/bootstrap-session-timeout": "^1.0.0",
         "admin-resources": "git+https://github.com/themesbrand/admin-resources#master",
-        "angular-auto-complete": "^1.7.4",
         "bootstrap": "4.5.0",
         "bootstrap-colorpicker": "^3.1.2",
         "bootstrap-datepicker": "^1.9.0",
@@ -83,7 +82,6 @@
         "simplebar": "^4.2.3",
         "summernote": "^0.8.16",
         "sweetalert2": "^8.18.0",
-        "tinymce": "^5.0.16",
-        "ui-select": "^0.19.8"
+        "tinymce": "^5.0.16"
     }
 }
