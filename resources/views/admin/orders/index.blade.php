@@ -88,7 +88,13 @@
                                     <td>{{$result->customer->firstname. ' '.$result->customer->lastname}}</td>
                                     <td>{{$result->customer->tel}}</td>
                                     <td><a href="/admin/orders/orderstatus/{{$result->id}}"><h5><span class="badge badge-{{$result->status->color}}">{{$result->status->title}}</span> - <span><a href="http://kargotakip.kargozamani.com:90/hareket.asp?har_kod={{$result->shipment_code}}">{{$result->shipment_code}}</a></span></h5></a></td>
-                                    <td><a href="/admin/orders/shipment/{{$result->id}}/2"><i class="fa fa-ship"></i> </a></td>
+                                    <td>
+                                        <?php if($result->status_id != 1){ ?>
+                                        <a target="_blank" href="/admin/orders/barcode/{{$result->id}}"><i class="fa fa-barcode"></i> </a>
+                                        <?php }else{ ?>
+                                        <a href="/admin/shipment/create/{{$result->id}}/2"><i class="fa fa-ship"></i> </a>
+                                        <?php } ?>
+                                    </td>
                                     <td>{{$result->amount}}</td>
                                     <td>{{$result->printed}}</td>
                                     <td>

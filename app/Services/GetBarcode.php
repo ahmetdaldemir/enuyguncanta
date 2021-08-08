@@ -11,13 +11,15 @@ use App\Models\Shipment as ShipmentModel;
 
 class GetBarcode extends ShipmentServiceRequest implements IShipment
 {
-    protected $base_uri = "http://webpostman.kargozamani.com:9999/";
+    protected $base_uri = "http://webpostman.kargozamani.com:9999/restapi/client/";
     protected $method ="GET";
-    protected $path = "restapi/client/consignment/get_barcode";
+    protected $path;
     protected $labelData;
 
     public function __construct(ShipmentCompany $shipmentSetting,$shipmentCode)
     {
+        $this->path = 'consignment/get_barcode?barcode='.$shipmentCode.'&print_page&ext=pdf';
+
         $this->payload = $shipmentCode;
         $this->options['headers']['Authorization'] = "5VvspOKA4C9ZcEWmzd6S2ByqR0wM3Y8bjHFPnxTDht1N7LaU";
         $this->options['headers']['From'] = "hasret@enuyguncanta.com";
@@ -33,6 +35,7 @@ class GetBarcode extends ShipmentServiceRequest implements IShipment
                 'ext' => "pdf",
             ],
         ];
+
         parent::__construct($shipmentSetting);
     }
 

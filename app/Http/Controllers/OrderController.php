@@ -106,6 +106,8 @@ class OrderController extends Controller
         $data['user'] = Auth()->id();
         $data['category'] = Category::all();
         $data['order'] = Order::find($id);
+        $data['shipmentcompanies'] = ShipmentCompany::all();
+
         return view('admin.orders.edit', $data);
     }
 
@@ -184,102 +186,6 @@ class OrderController extends Controller
         $order->status_id = $status_id;
         $order->save();
         return redirect()->back();
-    }
-
-    public function shipment(int $id, int $status_id)
-    {
-        if ($status_id == 2) {
-            $order = Order::find($id);
-            $collectData = $this->collectData($order);
-            $shipment = new Shipment($this->shipmentSettings, $collectData);
-            $content = json_decode($shipment->getContent(), TRUE);
-            $order->status_id = $status_id;
-            $order->shipment_code = $content['barcode'];
-            $order->save();
-
-
-            $shipmentnew = new ShipmentModel();
-            $shipmentnew->barcode =   $content['barcode']; // $this->getBarcode( $content['barcode']);
-            $shipmentnew->shipping_code = $content['barcode'];
-            $shipmentnew->save();
-        }
-        return redirect()->back();
-    }
-
-    public function collectData(Order $order)
-    {
-        $labelData["customer"] = $order->customer->firstname . " " . $order->customer->lastname;
-        $labelData["customer_code"] = "";
-        $labelData["province_name"] = mb_strtoupper(City::find($order->customer->city)->name);
-        $labelData["county_name"] = mb_strtoupper(State::find($order->customer->state)->name);
-        $labelData["address"] = $order->customer->address;
-        $labelData["tax_number"] = "";
-        $labelData["tax_office"] = "";
-        $labelData["telephone"] = "";
-        $labelData["branch_code"] = "PTT";
-        $labelData["start_branch"] = "";
-        $labelData["region_code"] = "";
-        $labelData["courrier_code"] = "";
-        $labelData["barcode"] = "";
-        $labelData["sub_barcode"] = "";
-        $labelData["reference"] = "";
-        $labelData["amount"] = "";
-        $labelData["currency_name"] = "";
-        $labelData["summary"] = "";
-        $labelData["quantity"] = "1";
-        $labelData["weight"] = "";
-        $labelData["consignment_type_id"] = "1";
-        $labelData["amount_type_id"] = "3";
-        $labelData["add_service_type_id"] = "";
-        $labelData["distribution_type_id"] = "";
-        $labelData["tax_rate"] = "";
-        $labelData["order_number"] = "ENY" . $order->id;
-        $labelData["output_number"] = "";
-        $labelData["seller"] = "ENUYGUN";
-        $labelData["invoice_serial"] = "";
-        $labelData["invoice_number"] = "";
-        $labelData["total_weight"] = "";
-        $labelData["total_bulk"] = "";
-        $labelData["bulk_weight"] = "";
-        $labelData["bulk_width"] = "";
-        $labelData["bulk_height"] = "";
-        $labelData["bulk_length"] = "";
-        $labelData["bulk_value"] = "";
-        $labelData["transportation_fee"] = "";
-        $labelData["goods_value"] = "";
-        return $labelData;
-    }
-
-    public function getCity($cityName)
-    {
-
-        $c = new GetCity($this->shipmentSettings);
-        $x = json_decode($c->getContent(), TRUE);
-        $citys = $x['result'];
-        foreach ($citys as $key => $value) {
-            if ($value == mb_strtoupper($cityName, "UTF-8")) {
-                $this->city = $key;
-            }
-        }
-    }
-
-    public function getState($stateName)
-    {
-        $c = new GetState($this->shipmentSettings, $this->city);
-        $x = json_decode($c->getContent(), TRUE);
-        $states = $x['result'];
-        foreach ($states as $key => $value) {
-            if ($value == mb_strtoupper($stateName, "UTF-8")) {
-                $this->city = $key;
-            }
-        }
-    }
-
-    public function getBarcode($shipmentCode)
-    {
-        $c = new GetBarcode($this->shipmentSettings,$shipmentCode);
-        $x = json_decode($c->getContent(), TRUE);
-        dd($x);
     }
 
 

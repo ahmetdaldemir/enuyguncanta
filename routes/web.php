@@ -80,7 +80,8 @@ Route::group([ 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']]
     Route::get('orders/view/{id}', 'OrderController@view');
     Route::get('orders/export/', 'OrderController@export');
     Route::get('orders/orderstatus/{id}/{status_id}', 'OrderController@orderstatus');
-    Route::get('orders/shipment/{id}/{status_id}', 'OrderController@shipment');
+    Route::get('shipment/create/{id}/{status_id}', 'ShipmentController@create');
+    Route::get('orders/barcode/{id}', 'ShipmentController@barcode');
 
     //Users
     Route::get('users', 'UserController@index');

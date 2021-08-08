@@ -15,6 +15,10 @@ class CreateShipmentsTable extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("order_id")->index()->default(1);
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->text('barcode');
+            $table->string('shipping_code');
             $table->timestamps();
         });
     }

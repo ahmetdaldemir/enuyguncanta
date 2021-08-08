@@ -63,9 +63,10 @@
                                 <div class="col-md-4">
                                     <label>Ödeme Tipi</label>
                                     <select class="form-control" name="payment_type">
+                                        <option value="pay_of_door" selected>Kapıda Ödeme Nakit</option>
+                                        <option value="pay_of_door">Kapıda Ödeme Pos</option>
+                                        <option value="cash" >Banka Havalesi</option>
                                         <option value="credit_card">Kredi Kartı</option>
-                                        <option value="cash">Banka Havalesi</option>
-                                        <option value="pay_of_door">Kapıda Ödeme</option>
                                     </select>
                                  </div>
                                 <div class="col-md-4">
@@ -227,7 +228,7 @@
                                 <label for="example-text-email" class="col-sm-2 col-form-label">E-posta</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="email" id="example-text-email"
-                                           placeholder="E-posta" required>
+                                           placeholder="E-posta" >
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -241,8 +242,7 @@
                                 <label class="col-sm-2 col-form-label">Şehir</label>
 
                                 <div class="col-sm-10" ng-init="cities()">
-                                    <select ng-model="cityId" ng-change="cityChange()" name="city" class="form-control"
-                                            ng-change="cityChange()">
+                                    <select ng-model="cityId" ng-change="cityChange()" name="city" class="form-control" ng-change="cityChange()">
                                         <option disabled selected hidden>Şehirler</option>
                                         <option ng-repeat="item in cities" value="@{{item.id}}">@{{item.name}}</option>
                                     </select>
