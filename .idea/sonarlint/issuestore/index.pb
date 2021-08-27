@@ -113,3 +113,11 @@ H
 resources/views/test.php,9\0\90e32c73dc4479c3dd618c9d6ef37a5f4871e17e
 V
 &app/Http/Controllers/ApiController.php,d\d\ddca0ae47086c744fd1a72629a7513ffd51701f3
+y
+Idatabase/migrations/2021_06_28_121154_create_shipment_companies_table.php,5\6\560e9ec5f0a18b9557c978b3843e88836eeba9d7
+d
+4resources/views/admin/catalog/brands/index.blade.php,4\0\40bc7e79e5951cfa99c452a19ac1b191fcfb05a4
+a
+1resources/views/admin/shipments/barcode.blade.php,9\7\9794d5457ac369fe62631cd6079a10c9db43eb6b
+X
+(app/Http/Controllers/BrandController.php,b\a\ba5a4cb15732ed59fed3891cd22f0443c51f74c6

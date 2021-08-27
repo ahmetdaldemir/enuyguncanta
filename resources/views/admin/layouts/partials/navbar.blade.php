@@ -109,32 +109,32 @@
                                     <i class="ti-shopping-cart"></i>Siparişler
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/products">
-                                    <i class="ti-view-list"></i>Ürünler
-                                </a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/admin/products">--}}
+{{--                                    <i class="ti-view-list"></i>Ürünler--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-email" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ti-layout-grid4-alt"></i>Marka / Kategori
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="topnav-email">
-                                    <a href="/admin/catalog/brands" class="dropdown-item">Markalar</a>
-                                    <a href="/admin/catalog/categories" class="dropdown-item">Kategoriler</a>
-                                    <a href="/admin/catalog/color" class="dropdown-item">Renkler</a>
+{{--                            <li class="nav-item dropdown">--}}
+{{--                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-email" role="button"--}}
+{{--                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                    <i class="ti-layout-grid4-alt"></i>Marka / Kategori--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="topnav-email">--}}
+{{--                                    <a href="/admin/catalog/brands" class="dropdown-item">Markalar</a>--}}
+{{--                                    <a href="/admin/catalog/categories" class="dropdown-item">Kategoriler</a>--}}
+{{--                                    <a href="/admin/catalog/color" class="dropdown-item">Renkler</a>--}}
 {{--                                    <a href="/admin/catalog/attributes" class="dropdown-item">Ürün Özellikleri</a>--}}
 {{--                                    <a href="/admin/catalog/variants" class="dropdown-item">Ürün Varyant</a>--}}
-                                    <a href="/admin/catalog/orderstatus" class="dropdown-item">Sipariş Durumları</a>
-                                    <a href="/admin/shipmentscompanies" class="dropdown-item">Kargo Firmaları</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/customers">
-                                    <i class="ti-user"></i>Müşteriler
-                                </a>
-                            </li>
+{{--                                    <a href="/admin/catalog/orderstatus" class="dropdown-item">Sipariş Durumları</a>--}}
+{{--                                    <a href="/admin/shipmentscompanies" class="dropdown-item">Kargo Firmaları</a>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="/admin/customers">--}}
+{{--                                    <i class="ti-user"></i>Müşteriler--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/shipments">
                                     <i class="ti-truck"></i>Kargo İşlemleri

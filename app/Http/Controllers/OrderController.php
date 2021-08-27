@@ -57,45 +57,58 @@ class OrderController extends Controller
 
     public function save(Request $request)
     {
-        $customer = Customer::find($request->id);
+
         $amount = 0;
         $save_data = new Order();
-        $save_data->customer_id = $request->customer_id;
         $save_data->user_id = Auth()->id();
         $save_data->status_id = 1;
         $save_data->amount = $amount;
         $save_data->custom_amount = $request->custom_amount;
         $save_data->description = $request->description;
 
-        if (isset($request->fullname)) {
+        if($request->customer_id == null)
+        {
             $save_data->fullname = $request->fullname;
             $save_data->tel = $request->tel;
             $save_data->mail = $request->mail;
             $save_data->address = $request->address;
             $save_data->city_id = $request->city;
             $save_data->state_id = $request->state;
+//            $customer = Customer::find($request->customer_id);
+
+        }else{
+            $customer = Customer::find($request->customer_id);
+//            $save_data->customer_id = $request->customer_id;
+            $save_data->fullname = $request->firstname." ".$request->lasttname;
+            $save_data->tel = $customer->tel;
+            $save_data->mail = $customer->email;
+            $save_data->address = $customer->address;
+            $save_data->city_id = $customer->city;
+            $save_data->state_id = $customer->state;
         }
 
         $save_data->save();
         $order_id = $save_data->id;
 
         foreach ($request->product as $product) {
-            $price = Product::find($product["id"])->price1;
+//            $price = Product::find($product["id"])->price1;
             $orderproduct = new OrderProduct();
-            $orderproduct->product_id = $product["id"];
-            $orderproduct->price = $price;
+//            $orderproduct->product_id = $product["id"];
+            $orderproduct->product_id = 1;
+            $orderproduct->name = $product["name"];
+            $orderproduct->price = $product["price"];;
             $orderproduct->order_id = $order_id;
             $orderproduct->quantity = $product["quantity"];
             $orderproduct->save();
 
-            Product::where("id", $product["id"])->decrement('quantity', $product["quantity"]);
-
-            $amount += $price * $product["quantity"];
+//            Product::where("id", $product["id"])->decrement('quantity', $product["quantity"]);
+//
+//            $amount += $price * $product["quantity"];
         }
 
-        $orderupdate = Order::find($order_id);
-        $orderupdate->amount = $amount;
-        $orderupdate->save();
+//        $orderupdate = Order::find($order_id);
+//        $orderupdate->amount = $amount;
+//        $orderupdate->save();
         return redirect("admin/orders/index/1");
     }
 

@@ -1,11 +1,11 @@
 
-OWeb:BoldAndItalicTagsCheck‡"!Replace this <b> tag by <strong>.(§æğ8ğãº÷¨/
-GWeb:BoldAndItalicTagsCheck^"!Replace this <b> tag by <strong>.(§æğ
+m Web:TableHeaderHasIdOrScopeCheck“";Add either an 'id' or a 'scope' attribute to this <th> tag.(ö œÂüÿÿÿÿ
+GWeb:BoldAndItalicTagsCheck_"!Replace this <b> tag by <strong>.(§æğ
+NWeb:TableWithoutCaptionCheck" Add a description to this table.(Üïğ şÿÿÿÿ
+m Web:TableHeaderHasIdOrScopeCheck”";Add either an 'id' or a 'scope' attribute to this <th> tag.(êĞß®øÿÿÿÿ
+h Web:TableHeaderHasIdOrScopeCheck•";Add either an 'id' or a 'scope' attribute to this <th> tag.(É“š¼
+GWeb:BoldAndItalicTagsCheckX"!Replace this <b> tag by <strong>.(§æğ
+GWeb:BoldAndItalicTagsCheckf"!Replace this <b> tag by <strong>.(§æğ
 CWeb:BoldAndItalicTagsCheck."Replace this <i> tag by <em>.(‹öÆÎ
-GWeb:BoldAndItalicTagsChecke"!Replace this <b> tag by <strong>.(§æğ
-m Web:TableHeaderHasIdOrScopeCheck’";Add either an 'id' or a 'scope' attribute to this <th> tag.(ö œÂüÿÿÿÿ
-GWeb:BoldAndItalicTagsCheck~"!Replace this <b> tag by <strong>.(§æğ
-NWeb:TableWithoutCaptionCheck" Add a description to this table.(Üïğ şÿÿÿÿ
-h Web:TableHeaderHasIdOrScopeCheck”";Add either an 'id' or a 'scope' attribute to this <th> tag.(É“š¼
-GWeb:BoldAndItalicTagsCheckW"!Replace this <b> tag by <strong>.(§æğ
-m Web:TableHeaderHasIdOrScopeCheck“";Add either an 'id' or a 'scope' attribute to this <th> tag.(êĞß®øÿÿÿÿ
+GWeb:BoldAndItalicTagsCheck"!Replace this <b> tag by <strong>.(§æğ
+OWeb:BoldAndItalicTagsCheckˆ"!Replace this <b> tag by <strong>.(§æğ8ğãº÷¨/

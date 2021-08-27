@@ -47,10 +47,10 @@
                                 <div class="col-6">
                                     <address>
                                         <strong>Müşteri :</strong><br>
-                                        <?php echo $order->customer->firstname ." ". $order->customer->lastname ?><br>
-                                        <?=$order->customer->address?><br>
-                                        <?=$order->customer->tel?><br>
-                                        <?=$order->customer->mail?>
+                                        <?php echo $order->fullname ?><br>
+                                        <?=$order->address?><br>
+                                        <?=$order->tel?><br>
+                                        <?=$order->mail?>
                                     </address>
                                 </div>
                                 <div class="col-6 text-right">
@@ -61,7 +61,7 @@
                                     <address>
                                         <strong>Ödeme Tipi :</strong><br>
                                         Visa ending **** 4242<br>
-                                        <?=$order->customer->mail?>
+                                        <?=$order->mail?>
                                     </address>
                                 </div>
                                 <div class="col-6 mt-4 text-right">
@@ -96,9 +96,8 @@
 
                                             <?php foreach ($order->product as $line){ ?>
                                             <tr>
-                                                <td><img style="width: 50px" src="/public/upload/<?=$line->product->image?>" /></td>
-                                                <td><?=$line->product->stock_code?></td>
-                                                <td><?=$line->product->name?></td>
+                                                <td><?=$line->name?></td>
+                                                <td><?=$line->price?></td>
                                                 <td><?=$line->quantity?></td>
                                                 <td class="text-right"><?=number_format($line->price, 2)?> <i class="fa fa-lira-sign"></i> </td>
                                             </tr>
@@ -133,7 +132,11 @@
 
                                     <div class="d-print-none">
                                         <div class="float-right">
-                                            <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light mr-2"><i class="fa fa-print"></i></a>
+                                            <?php if($result->status_id != 1){ ?>
+                                            <a target="_blank" href="/admin/orders/barcode/{{$result->id}}"><i class="fa fa-barcode"></i></a>
+                                            <?php }else{ ?>
+                                                <a  href="/admin/shipment/create/{{$result->id}}/2" class="btn btn-success waves-effect waves-light mr-2"><i class="fa fa-print"></i></a>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

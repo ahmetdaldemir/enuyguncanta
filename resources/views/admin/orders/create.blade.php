@@ -30,31 +30,31 @@
                         <div class="card-body">
                             <h4 class="card-title">SİPARİŞ EKLE</h4>
                             <hr/>
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Müşteri </label>
-                                <div class="col-sm-10">
+{{--                            <div class="form-group row">--}}
+{{--                                <label for="example-text-input" class="col-sm-2 col-form-label">Müşteri </label>--}}
+{{--                                <div class="col-sm-10">--}}
 
-                                    <div class="input-group mb-3">
-                                        <input data-customer_id="" type="search"
-                                               class="form-control nav-search nav-search-field ng-pristine ng-valid ng-empty ng-touched"
-                                               id="theSearch" autocomplete="off" ng-keyup="fetchUsers()"
-                                               ng-model="searchText" ng-click="searchboxClicked($event);"
-                                               name="searchkeyword" method="get">
-                                        <input type="hidden" id="theSearchHidden" name="customer_id" />
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary waves-effect waves-light"
-                                                    type="button" data-toggle="modal" data-target=".customer"><i
-                                                    class="fas fa-plus"></i></button>
-                                        </div>
-                                        <ul id="theSearchUl" style="    width: 100%;  position: relative;">
-                                            <li ng-click="addCustomerInput(item.id,item.firstname,item.lastname)"
-                                                ng-repeat="item in searchResult">@{{item.firstname}} @{{item.lastname}}
-                                            </li>
-                                        </ul>
-                                    </div>
+{{--                                    <div class="input-group mb-3">--}}
+{{--                                        <input data-customer_id="" type="search"--}}
+{{--                                               class="form-control nav-search nav-search-field ng-pristine ng-valid ng-empty ng-touched"--}}
+{{--                                               id="theSearch" autocomplete="off" ng-keyup="fetchUsers()"--}}
+{{--                                               ng-model="searchText" ng-click="searchboxClicked($event);"--}}
+{{--                                               name="searchkeyword" method="get">--}}
+{{--                                        <input type="hidden" id="theSearchHidden" name="customer_id" />--}}
+{{--                                        <div class="input-group-append">--}}
+{{--                                            <button class="btn btn-outline-primary waves-effect waves-light"--}}
+{{--                                                    type="button" data-toggle="modal" data-target=".customer"><i--}}
+{{--                                                    class="fas fa-plus"></i></button>--}}
+{{--                                        </div>--}}
+{{--                                        <ul id="theSearchUl" style="    width: 100%;  position: relative;">--}}
+{{--                                            <li ng-click="addCustomerInput(item.id,item.firstname,item.lastname)"--}}
+{{--                                                ng-repeat="item in searchResult">@{{item.firstname}} @{{item.lastname}}--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
 
-                                </div>
-                            </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-group row">
                                 <div class="col-md-4">
                                     <label>Toplam Fiyat</label>
@@ -80,31 +80,31 @@
                             </div>
 
                             <fieldset class="scheduler-border">
-                                <legend class="scheduler-border">Müşteri ile farklı olması halinde doldurunuz</legend>
+{{--                                <legend class="scheduler-border">Müşteri ile farklı olması halinde doldurunuz</legend>--}}
+                                <legend class="scheduler-border">Müşteri Bilgilerini Doldurunuz</legend>
                                     <div class="form-group row">
                                         <label for="example-text-customer" class="col-sm-2 col-form-label">Müşteri Adı  Soyadı</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="name"  id="example-text-customer" placeholder="Telefon">
-                                            <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
+                                            <input class="form-control" type="text" name="name"  id="example-text-customer" placeholder="Müşteri Adı ve Soyadı" required>
+                                            <small style="color:#ff0000"><b>* Zorunlu </b></small>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-text-tel" class="col-sm-2 col-form-label">Telefon</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="tel" id="example-text-tel"  placeholder="Telefon">
-                                            <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
+                                            <input class="form-control" type="text" name="tel" id="example-text-tel"  placeholder="Telefon" required>
+                                            <small style="color:#ff0000"><b>* Zorunlu </b></small>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-text-mail" class="col-sm-2 col-form-label">E-posta</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="email" id="example-text-mail"  placeholder="E-posta" >
-                                            <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
+                                            <input class="form-control" type="email" name="email" id="example-text-mail"  placeholder="E-posta"  required>
+                                            <small style="color:#ff0000"><b>* Zorunlu </b></small>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">İl</label>
-
                                         <div class="col-sm-10" ng-init="cities()">
                                             <select ng-model="cityId" ng-change="cityChange()" name="city" class="form-control"  ng-change="cityChange()">
                                                 <option disabled selected hidden>Şehirler</option>
@@ -115,16 +115,14 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">İlçe</label>
                                         <div class="col-sm-10">
-                                            <select name="state" id="state" class="form-control">
-
-                                            </select>
+                                            <select name="state" id="state" class="form-control"></select>
                                         </div>
                                     </div>
                                 <div class="form-group row">
-                                    <label for="example-text-mail" class="col-sm-2 col-form-label">E-posta</label>
+                                    <label for="example-text-mail" class="col-sm-2 col-form-label">Adres</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="email" id="example-text-mail"  placeholder="E-posta" >
-                                        <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
+                                        <input class="form-control" type="text" name="text" id="example-text-mail"  placeholder="Adres" >
+                                        <small style="color:#ff0000"><b>* Zorunlu </b></small>
                                     </div>
                                 </div>
                             </fieldset>
@@ -132,8 +130,8 @@
                             <div class="form-group row">
                                 <label for="example-text-mail" class="col-sm-2 col-form-label">Açıklama</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control"   name="description" id="example-text-mail" ></textarea>
-                                    <small style="color:#ff0000"><b>* Zorunlu DEĞİL </b></small>
+                                    <textarea class="form-control"   name="description" id="example-text-mail" required></textarea>
+                                    <small style="color:#ff0000"><b>* Zorunlu </b></small>
                                 </div>
                             </div>
                         </hr>
@@ -141,10 +139,50 @@
                                 <label for="example-text-mail" class="col-sm-2 col-form-label">Ürünler</label>
                                 <div class="col-sm-10">
                                     <div class="table-responsive">
+{{--                                        <table class="table mb-0" id="product-list">--}}
+{{--                                            <thead>--}}
+{{--                                            <tr>--}}
+{{--                                                <th>Ürün Adı</th>--}}
+{{--                                                <th>Adet</th>--}}
+{{--                                                <th></th>--}}
+{{--                                            </tr>--}}
+{{--                                            </thead>--}}
+
+{{--                                            <tbody>--}}
+
+{{--                                            </tbody>--}}
+{{--                                            <tfoot>--}}
+{{--                                            <tr>--}}
+{{--                                                <td colspan="5">--}}
+{{--                                                    <input ng-keyup="fetchProducts(1)" ng-model="searchProducts"--}}
+{{--                                                           data-product_id="" class="form-control" type="text"--}}
+{{--                                                           name="name" id="theProducts_1" placeholder="Ürün Adı"  autocomplete="off" />--}}
+{{--                                                    <ul id="theProductsUl_1"--}}
+{{--                                                        style="    width: 100%;  position: relative;">--}}
+{{--                                                        <li ng-click="addProductsInput(item.id,item.name,item.stock_code,1)"--}}
+{{--                                                            ng-repeat="item in productsResult">@{{item.name}}--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </td>--}}
+{{--                                                <td>--}}
+{{--                                                    <button type="button" id="button-product"--}}
+{{--                                                            class="btn btn-success waves-effect waves-light"> + Ürünü--}}
+{{--                                                        Ekle--}}
+{{--                                                    </button>--}}
+{{--                                                    <button type="button"--}}
+{{--                                                            class="btn btn-primary waves-effect waves-light"--}}
+{{--                                                            data-toggle="modal" data-target=".product"> +--}}
+{{--                                                    </button>--}}
+{{--                                                </td>--}}
+{{--                                            </tr>--}}
+{{--                                            </tfoot>--}}
+{{--                                            </tbody>--}}
+{{--                                        </table>--}}
                                         <table class="table mb-0" id="product-list">
                                             <thead>
                                             <tr>
                                                 <th>Ürün Adı</th>
+                                                <th>Fiyat</th>
                                                 <th>Adet</th>
                                                 <th></th>
                                             </tr>
@@ -155,32 +193,16 @@
                                             </tbody>
                                             <tfoot>
                                             <tr>
-                                                <td colspan="5">
-                                                    <input ng-keyup="fetchProducts(1)" ng-model="searchProducts"
-                                                           data-product_id="" class="form-control" type="text"
-                                                           name="name" id="theProducts_1" placeholder="Ürün Adı"  autocomplete="off" />
-                                                    <ul id="theProductsUl_1"
-                                                        style="    width: 100%;  position: relative;">
-                                                        <li ng-click="addProductsInput(item.id,item.name,item.stock_code,1)"
-                                                            ng-repeat="item in productsResult">@{{item.name}}
-                                                        </li>
-                                                    </ul>
-                                                </td>
                                                 <td>
-{{--                                                    <button type="button" id="button-product"--}}
-{{--                                                            class="btn btn-success waves-effect waves-light"> + Ürünü--}}
-{{--                                                        Ekle--}}
-{{--                                                    </button>--}}
-                                                    <button type="button"
-                                                            class="btn btn-primary waves-effect waves-light"
-                                                            data-toggle="modal" data-target=".product"> +
+                                                    <button type="button" id="button-product"
+                                                            class="btn btn-success waves-effect waves-light"> + Ürünü
+                                                        Ekle
                                                     </button>
                                                 </td>
                                             </tr>
                                             </tfoot>
                                             </tbody>
                                         </table>
-
                                     </div>
                                 </div>
                             </div>
@@ -499,20 +521,20 @@
 
         });
     </script>
-{{--    <script>--}}
-{{--        var product_row = 0;--}}
-{{--        $(document).on('click', '#button-product', function () {--}}
-{{--            html = '<tr id="product-value-row' + product_row + '">';--}}
-{{--            html += '<td colspan="2"><input class="form-control" autocomplete="off" ng-keyup="fetchProducts(product_row)"  ng-model="searchProducts" type="text" name="name" data-product_id="" id="theProducts_' + product_row + '" placeholder="Ürün Adı" autocomplete="off"></td>';--}}
-{{--            html += '<td><input class="form-control" type="text" name="code" id="theProductsStockCode_' + product_row + '" placeholder="Ürün Kodu" autocomplete="off"></td>';--}}
-{{--            html += '<td><input class="form-control" type="text" name="quentity" id="theProductsQuantity_' + product_row + '" placeholder="Adet" autocomplete="off"></td>';--}}
-{{--            html += '<td></td>';--}}
-{{--            html += '<td><button onclick="$(\'#product-value-row' + product_row + '\').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>';--}}
-{{--            html += '</tr>';--}}
-{{--            $('#product-list tbody').append(html);--}}
-{{--            product_row++;--}}
+    <script>
+        var product_row = 0;
+        $(document).on('click', '#button-product', function () {
+            html = '<tr id="product-value-row' + product_row + '">';
+            html += '<td colspan="2"><input class="form-control" autocomplete="off" ng-keyup="fetchProducts(product_row)"  ng-model="searchProducts" type="text" name="product['+product_row+'][name]" data-product_id="" id="theProducts_' + product_row + '" placeholder="Ürün Adı" autocomplete="off"></td>';
+            html += '<td><input class="form-control" type="number" name="product['+product_row+'][price]" id="theProductsStockCode_' + product_row + '" placeholder="Ürün Fiyat" autocomplete="off"></td>';
+            html += '<td><input class="form-control" type="number" name="product['+product_row+'][quantity]" id="theProductsQuantity_' + product_row + '" placeholder="Adet" autocomplete="off"></td>';
+            html += '<td></td>';
+            html += '<td><button onclick="$(\'#product-value-row' + product_row + '\').remove();" type="button" class="btn btn-danger waves-effect waves-light"> - Sil</button></td>';
+            html += '</tr>';
+            $('#product-list tbody').append(html);
+            product_row++;
 
-{{--            $("#theProductsUl_1").clone().insertAfter("#product-value-row" + product_row + " #theProducts_" + product_row);--}}
-{{--        });--}}
-{{--    </script>--}}
+            $("#theProductsUl_1").clone().insertAfter("#product-value-row" + product_row + " #theProducts_" + product_row);
+        });
+    </script>
 @endsection

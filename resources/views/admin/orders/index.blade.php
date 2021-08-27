@@ -25,18 +25,20 @@
     </div>
     <!-- end page title -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" style="    margin-bottom: 25px;">
             <div class="page-title-box">
+                <div class="button-items float-left">
+                    <a href="/admin/orders/create" class="btn btn-danger">Sipariş Ekle</a>
+                </div>
                 <div class="button-items float-right">
                     <a href="/admin/orders/index/1" class="btn btn-info">Hazırlananlar Siparişler</a>
                     <a href="/admin/orders/index/2" class="btn btn-warning">Onaylanan Siparişler</a>
                     <a href="/admin/orders/index/4" class="btn btn-danger">Kargoda Olan Siparişler</a>
                     <a href="/admin/orders/index/0" class="btn btn-primary">Tüm Siparişler</a>
-                    <a href="/admin/orders/create" class="btn btn-primary">Sipariş Ekle</a>
                     <a href="#" class="btn btn-info">Tümünü Yazdır</a>
                     <a href="/admin/orders/export" class="btn btn-success">Excel Aktar</a>
                 </div>
-                <h4 class="mt-0 header-title">Siparişler</h4>
+
             </div>
         </div>
     </div>
@@ -85,8 +87,8 @@
                                 <tr>
                                     <td>{{$result->id}}</td>
                                     <td><i class="far fa-user" title="{{$result->user->name}}"></i></td>
-                                    <td>{{$result->customer->firstname. ' '.$result->customer->lastname}}</td>
-                                    <td>{{$result->customer->tel}}</td>
+                                    <td>{{$result->fullname}}</td>
+                                    <td>{{$result->tel}}</td>
                                     <td><a href="/admin/orders/orderstatus/{{$result->id}}"><h5><span class="badge badge-{{$result->status->color}}">{{$result->status->title}}</span> - <span><a href="http://kargotakip.kargozamani.com:90/hareket.asp?har_kod={{$result->shipment_code}}">{{$result->shipment_code}}</a></span></h5></a></td>
                                     <td>
                                         <?php if($result->status_id != 1){ ?>
